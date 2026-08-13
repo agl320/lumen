@@ -1,75 +1,59 @@
-# React + TypeScript + Vite
+# Lumen Flashcards
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Minimal flashcards app with:
 
-Currently, two official plugins are available:
+- React + TypeScript + Tailwind (barebones UI)
+- FastAPI backend
+- SQLite persistence
+- Weighted review frequency based on correctness
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Add, edit, delete cards
+- Shuffle card list on the manage page
+- Study page with answer reveal
+- Correct/incorrect tracking per card
+- Frequency boost for weaker cards
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Weighted Frequency Logic
 
-## Expanding the ESLint configuration
+Each card stores a `score`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Correct answer: `score += 1`
+- Incorrect answer: `score -= 2`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The next study card is selected by weighted random where lower score means higher weight. This makes frequently missed cards appear more often.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Run
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Frontend dependencies:
 
-```
+   ```bash
+   npm install
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Python dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   pip install -r server/requirements.txt
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. Optional manual DB setup (FastAPI startup also initializes automatically):
 
-```
+   ```bash
+   python src/data/table_setup.py
+   ```
+
+4. Start backend:
+
+   ```bash
+   npm run dev:api
+   ```
+
+5. Start frontend:
+
+   ```bash
+   npm run dev
+   ```
+
+Frontend runs on `http://localhost:5173` and backend on `http://127.0.0.1:8000`.
