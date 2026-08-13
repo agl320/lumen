@@ -24,8 +24,8 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const api = {
-  listCards(shuffle = false): Promise<Card[]> {
-    return request<Card[]>(`/cards?shuffle=${shuffle}`);
+  listCards(): Promise<Card[]> {
+    return request<Card[]>("/cards");
   },
   nextCard(): Promise<Card | null> {
     return request<Card | null>("/cards/next");

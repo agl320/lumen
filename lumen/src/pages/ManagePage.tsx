@@ -10,11 +10,11 @@ export function ManagePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  async function loadCards(shuffle = false) {
+  async function loadCards() {
     setIsLoading(true);
     setError(null);
     try {
-      const nextCards = await api.listCards(shuffle);
+      const nextCards = await api.listCards();
       setCards(nextCards);
     } catch (loadError) {
       setError(
@@ -48,13 +48,6 @@ export function ManagePage() {
           onClick={() => void loadCards()}
         >
           Refresh
-        </button>
-        <button
-          type="button"
-          className="border px-3 py-1"
-          onClick={() => void loadCards(true)}
-        >
-          Shuffle
         </button>
       </div>
 
