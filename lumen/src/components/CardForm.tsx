@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RichTextEditor } from "./RichTextEditor";
 
 import type { Card, CardPayload } from "../types";
 
@@ -41,25 +42,13 @@ export function CardForm({ initial, onSubmit, onCancel }: CardFormProps) {
         <label htmlFor="front" className="block text-sm">
           Front
         </label>
-        <textarea
-          id="front"
-          value={front}
-          onChange={(event) => setFront(event.target.value)}
-          className="w-full border p-2"
-          rows={3}
-        />
+        <RichTextEditor content={front} onChange={setFront} />
       </div>
       <div className="space-y-1">
         <label htmlFor="back" className="block text-sm">
           Back
         </label>
-        <textarea
-          id="back"
-          value={back}
-          onChange={(event) => setBack(event.target.value)}
-          className="w-full border p-2"
-          rows={3}
-        />
+        <RichTextEditor content={back} onChange={setBack} />
       </div>
       <div className="flex gap-2">
         <button type="submit" disabled={isSaving} className="border px-3 py-1">
