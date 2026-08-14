@@ -30,3 +30,5 @@ __pycache__/
 # SQLite
 server/storage.db
 src/data/storage.db
+
+*.db

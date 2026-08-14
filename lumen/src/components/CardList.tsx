@@ -28,10 +28,19 @@ export function CardList({ cards, onDelete, onEdit }: CardListProps) {
           ) : (
             <div className="space-y-2">
               <p>
-                <strong>Front:</strong> {card.front}
+                <strong>Front:</strong>{" "}
+                <span className="whitespace-pre-wrap">
+                  {" "}
+                  {"\n"}
+                  {card.front}
+                </span>
               </p>
               <p>
-                <strong>Back:</strong> {card.back}
+                <strong>Back: </strong>{" "}
+                <span className="whitespace-pre-wrap">
+                  {"\n"}
+                  {card.back}
+                </span>
               </p>
               <p className="text-sm">
                 Score: {card.score} | Correct: {card.correct_count} | Incorrect:{" "}

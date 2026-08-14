@@ -15,13 +15,13 @@ export function StudyCard({ card, onReview, onSkip }: StudyCardProps) {
     <section className="space-y-3 border p-4">
       <div>
         <p className="text-sm">Question</p>
-        <p>{card.front}</p>
+        <p className="whitespace-pre-wrap">{card.front}</p>
       </div>
 
       {showAnswer ? (
         <div>
           <p className="text-sm">Answer</p>
-          <p>{card.back}</p>
+          <p className="whitespace-pre-wrap">{card.back}</p>
         </div>
       ) : null}
 
