@@ -32,7 +32,7 @@ export function ManagePage() {
   }, []);
 
   return (
-    <section className="space-y-4">
+    <section className="space-y-4 max-w-3xl mx-auto">
       <h2 className="text-lg">Manage Cards</h2>
       <CardForm
         onSubmit={async (payload) => {

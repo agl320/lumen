@@ -29,11 +29,17 @@ export function CardList({ cards, onDelete, onEdit }: CardListProps) {
             <div className="space-y-2">
               <p>
                 <strong className="opacity-50">Front:</strong>{" "}
-                <div dangerouslySetInnerHTML={{ __html: card.front }} />
+                <div
+                  className="card-content"
+                  dangerouslySetInnerHTML={{ __html: card.front }}
+                />
               </p>
               <p>
                 <strong className="opacity-50">Back: </strong>{" "}
-                <div dangerouslySetInnerHTML={{ __html: card.back }} />
+                <div
+                  className="card-content"
+                  dangerouslySetInnerHTML={{ __html: card.back }}
+                />
               </p>
               <p className="text-sm">
                 Score: {card.score} | Correct: {card.correct_count} | Incorrect:{" "}

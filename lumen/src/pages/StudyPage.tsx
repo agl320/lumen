@@ -39,15 +39,9 @@ export function StudyPage() {
   }, []);
 
   return (
-    <section className="space-y-4">
+    <section className="space-y-4 max-w-3xl mx-auto">
       <h2 className="text-lg">Study</h2>
-      <button
-        type="button"
-        className="border px-3 py-1"
-        onClick={() => void loadNextCard()}
-      >
-        New Card
-      </button>
+
       {isLoading ? <p>Loading...</p> : null}
       {error ? <p>{error}</p> : null}
       {!isLoading && !error && !card ? (

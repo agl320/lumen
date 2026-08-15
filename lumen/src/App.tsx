@@ -9,19 +9,19 @@ function App() {
   const [view, setView] = useState<View>("study");
 
   return (
-    <main className="mx-auto max-w-3xl space-y-4 p-4">
-      <h1 className="text-xl">Flashcards</h1>
-      <nav className="flex gap-2">
+    <main className="w-full min-h-screen space-y-4 p-4 bg-zinc-200">
+      <nav className="flex gap-2 max-w-3xl mx-auto">
+        <h1 className="text-xl">Lumen</h1>
         <button
           type="button"
-          className="border px-3 py-1"
+          className="bg-white rounded-lg px-3 py-1 text-zinc-700 text-sm"
           onClick={() => setView("study")}
         >
           Study
         </button>
         <button
           type="button"
-          className="border px-3 py-1"
+          className="bg-white rounded-lg px-3 py-1 text-zinc-700 text-sm"
           onClick={() => setView("manage")}
         >
           Manage
